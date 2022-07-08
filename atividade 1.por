@@ -1,24 +1,56 @@
-programa {
-	funcao inicio() {
 
-inteiro seg, min, hrs
-escreva("Entre com o Tempo em segundos:")
 
-leia(seg)
-hrs = seg / 3600
-min = (seg % 3600) / 60
-seg = (seg % 3600) % 60
+///A prefeitura de uma cidade fez uma pesquisa entre 20 de seus habitantes,
+//coletando dados sobre o salário e número de filhos. A prefeitura deseja saber:
+//a) média do salário da população;
+//b) média do número de filhos;
+//c) maior salário;
+//d) percentual de pessoas com salário até R$100,00.
+programa
+{
+	inclua biblioteca Matematica -->Mat
+	funcao inicio()
+	{
+		real salario = 0.00, mediaSalarios=0.00, mediaFilhos = 0.00, maiorSalario = 0.00, pessoaAte100 = 0.00, totalSalarios= 0.00, totalFilhos = 0.00, totalP100 = 0.00
+		inteiro filhos = 0
+		const inteiro HABITANTES = 3
+		
+		para(inteiro x=1; x<=HABITANTES; x++)
+		{
+		escreva ("\nInsira aqui o seu salário R$: ")
+		leia(salario)
+		escreva ("\nInsira aqui o numero de filhos: ")
+		leia(filhos)
+		totalSalarios = totalSalarios + salario
+		totalFilhos = totalFilhos + filhos
+		limpa()
+		
+		se (salario > maiorSalario) 
+		{
+			maiorSalario = salario		
+		}
+		se (salario <= 100 ) 
+		{ 
+		 totalP100++
+		}
 
-escreva(hrs," Horas,",min," Minutos e ",seg, " Segundos")
+		
+		}
+		mediaSalarios= totalSalarios / HABITANTES
+		mediaFilhos= totalFilhos / HABITANTES
+		pessoaAte100 = totalP100 / HABITANTES *100
+		escreva("\nMedia salarial : R$ ", Mat.arredondar(mediaSalarios, 3))
+		escreva("\nMedia de filhos é: ", Mat.arredondar(mediaFilhos, 3))
+		escreva("\nMaior salario informado R$:", maiorSalario)
+		escreva("\nPessoas com salario acima de 100: " , Mat.arredondar(pessoaAte100, 2))
 	}
 }
-
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 171; 
+ * @POSICAO-CURSOR = 1277; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
